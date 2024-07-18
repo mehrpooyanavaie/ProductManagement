@@ -1,0 +1,12 @@
+H:\Task\src\ProductApi.Domain\bin\Debug\net8.0\ProductApi.Domain.deps.json
+H:\Task\src\ProductApi.Domain\bin\Debug\net8.0\ProductApi.Domain.dll
+H:\Task\src\ProductApi.Domain\bin\Debug\net8.0\ProductApi.Domain.pdb
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ProductApi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ProductApi.Domain.AssemblyInfoInputs.cache
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ProductApi.Domain.AssemblyInfo.cs
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ProductApi.Domain.csproj.CoreCompileInputs.cache
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ProductApi.Domain.dll
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\refint\ProductApi.Domain.dll
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ProductApi.Domain.pdb
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ref\ProductApi.Domain.dll
+H:\Task\src\ProductApi.Domain\obj\Debug\net8.0\ProductApi.Domain.csproj.AssemblyReference.cache

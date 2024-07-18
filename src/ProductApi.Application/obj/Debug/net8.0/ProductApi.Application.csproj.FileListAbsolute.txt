@@ -1,0 +1,15 @@
+H:\Task\src\ProductApi.Application\bin\Debug\net8.0\ProductApi.Application.deps.json
+H:\Task\src\ProductApi.Application\bin\Debug\net8.0\ProductApi.Application.dll
+H:\Task\src\ProductApi.Application\bin\Debug\net8.0\ProductApi.Application.pdb
+H:\Task\src\ProductApi.Application\bin\Debug\net8.0\ProductApi.Domain.dll
+H:\Task\src\ProductApi.Application\bin\Debug\net8.0\ProductApi.Domain.pdb
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductApi.Application.csproj.AssemblyReference.cache
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductApi.Application.GeneratedMSBuildEditorConfig.editorconfig
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductApi.Application.AssemblyInfoInputs.cache
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductApi.Application.AssemblyInfo.cs
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductApi.Application.csproj.CoreCompileInputs.cache
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductA.E443A747.Up2Date
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductApi.Application.dll
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\refint\ProductApi.Application.dll
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ProductApi.Application.pdb
+H:\Task\src\ProductApi.Application\obj\Debug\net8.0\ref\ProductApi.Application.dll
