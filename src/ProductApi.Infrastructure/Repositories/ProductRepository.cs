@@ -15,11 +15,11 @@ namespace ProductApi.Infrastructure.Repositories
 
         override public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return await context.Products.Include(x => x.User).ToListAsync();
+            return await context.Products.ToListAsync();
         }
         override public async Task<Product> GetByIdAsync(int id)
         {
-            return await context.Products.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
+            return await context.Products.FirstOrDefaultAsync(x => x.Id == id);
         }
         override public async Task UpdateAsync(Product product)
         {
@@ -27,7 +27,7 @@ namespace ProductApi.Infrastructure.Repositories
         }
         public async Task<IEnumerable<Product>> GetProductsByUserIdAsync(string userId)
         {
-            return await context.Products.Include(x => x.User).Where(p => p.UserId == userId).ToListAsync();
+            return await context.Products.Where(p => p.UserId == userId).ToListAsync();
         }
 
     }

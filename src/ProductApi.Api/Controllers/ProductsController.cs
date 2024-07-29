@@ -25,8 +25,8 @@ namespace ProductApi.Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductVM>>> GetProducts(int page = 1, int pagesize = 10)
+        [HttpGet("getproducts")]
+        public async Task<ActionResult<IEnumerable<ProductVM>>> GetProductsAsync(int page = 1, int pagesize = 10)
         {
             var products = await _mediator.Send(new GetProductsQuery());
             var totalcount = products.Count();
@@ -35,7 +35,7 @@ namespace ProductApi.Api.Controllers
             return Ok(productsperpage);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getproduct/{id}")]
         public async Task<ActionResult<ProductVM>> GetProduct(int id)
         {
             var product = await _mediator.Send(new GetProductByIdQuery { Id = id });
@@ -47,17 +47,18 @@ namespace ProductApi.Api.Controllers
             return Ok(product);
         }
 
-        [HttpPost]
+        [HttpPost("CreateProductWithAutoEmailAndUserIdLoadingFromClaim")]
         [Authorize]
-        public async Task<ActionResult<int>> CreateProduct(CreateProductCommand command)
+        public async Task<ActionResult<int>> CreateProductWithAutoEmailAndUserIdLoadingFromClaim(CreateProductCommand command)
         {
-            command.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            command.ManufactureEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = HttpContext.User;
+            command.UserId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            command.ManufactureEmail = user.FindFirst(ClaimTypes.Email)?.Value;
             var productId = await _mediator.Send(command);
             return Ok(productId);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("updateproduct/{id}")]
         [Authorize]
         public async Task<IActionResult> UpdateProduct(int id, UpdateProductCommand command)
         {
@@ -65,8 +66,8 @@ namespace ProductApi.Api.Controllers
             {
                 return BadRequest();
             }
-
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = HttpContext.User;
+            var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var product = await _mediator.Send(new GetProductByIdQuery { Id = id });
 
             if (product == null)
@@ -83,11 +84,12 @@ namespace ProductApi.Api.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deleteproduct/{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = HttpContext.User;
+            var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var product = await _mediator.Send(new GetProductByIdQuery { Id = id });
 
             if (product == null)
@@ -103,7 +105,7 @@ namespace ProductApi.Api.Controllers
             await _mediator.Send(new DeleteProductCommand { Id = id });
             return NoContent();
         }
-        [HttpGet("user/{userId}")]
+        [HttpGet("getproductsbyuserid/{userId}")]
         public async Task<ActionResult<IEnumerable<ProductVM>>> GetProductsByUserId(string userId)
         {
             var query = new GetProductsByUserIdQuery { UserId = userId };

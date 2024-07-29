@@ -1,5 +1,6 @@
 using MediatR;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ProductApi.Application.Products.Commands
 {
@@ -9,8 +10,6 @@ namespace ProductApi.Application.Products.Commands
         public string Name { get; set; }
         public DateTime ProduceDate { get; set; }
         public string ManufacturePhone { get; set; }
-        public string ManufactureEmail { get; set; }
-
         public bool IsAvailable { get; set; }
     }
 }

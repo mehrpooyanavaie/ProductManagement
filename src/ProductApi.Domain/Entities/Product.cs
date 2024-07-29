@@ -1,5 +1,5 @@
 ﻿// using Microsoft.AspNetCore.Identity.
-using Microsoft.AspNetCore.Identity;
+// using Microsoft.AspNetCore.Identity;
 namespace ProductApi.Domain.Entities
 {
     public class Product : BaseEntity
@@ -17,6 +17,6 @@ namespace ProductApi.Domain.Entities
         public bool IsAvailable { get; set; }
         /*with out quantity*/
         public string UserId { get; set; }
-        public IdentityUser User { get; set; }
+        // public IdentityUser User { get; set; }
     }
 }

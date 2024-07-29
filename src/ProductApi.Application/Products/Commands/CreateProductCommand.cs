@@ -12,10 +12,10 @@ namespace ProductApi.Application.Products.Commands
         public DateTime ProduceDate { get; set; }
         public string ManufacturePhone { get; set; }
         [JsonIgnore]
-        public string ManufactureEmail { get; set; }
+        public string? ManufactureEmail { get; set; }
          [Required]
         public bool IsAvailable { get; set; }
         [JsonIgnore]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
     }
 }

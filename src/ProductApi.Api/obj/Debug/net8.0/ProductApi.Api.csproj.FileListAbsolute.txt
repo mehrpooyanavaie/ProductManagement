@@ -152,3 +152,4 @@ H:\Task\src\ProductApi.Api\obj\Debug\net8.0\refint\ProductApi.Api.dll
 H:\Task\src\ProductApi.Api\obj\Debug\net8.0\ProductApi.Api.pdb
 H:\Task\src\ProductApi.Api\obj\Debug\net8.0\ProductApi.Api.genruntimeconfig.cache
 H:\Task\src\ProductApi.Api\obj\Debug\net8.0\ref\ProductApi.Api.dll
+H:\Task\src\ProductApi.Api\bin\Debug\net8.0\Newtonsoft.Json.dll
