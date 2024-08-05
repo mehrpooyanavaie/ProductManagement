@@ -821,11 +821,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Task\\src\\ProductApi.Domain\\ProductApi.Domain.csproj",
+      "projectUniqueName": "G:\\lastt\\ProductManagement\\src\\ProductApi.Domain\\ProductApi.Domain.csproj",
       "projectName": "ProductApi.Domain",
-      "projectPath": "H:\\Task\\src\\ProductApi.Domain\\ProductApi.Domain.csproj",
+      "projectPath": "G:\\lastt\\ProductManagement\\src\\ProductApi.Domain\\ProductApi.Domain.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "H:\\Task\\src\\ProductApi.Domain\\obj\\",
+      "outputPath": "G:\\lastt\\ProductManagement\\src\\ProductApi.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

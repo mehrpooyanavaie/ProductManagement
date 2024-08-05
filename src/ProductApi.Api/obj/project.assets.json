@@ -5628,11 +5628,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Task\\src\\ProductApi.Api\\ProductApi.Api.csproj",
+      "projectUniqueName": "G:\\lastt\\ProductManagement\\src\\ProductApi.Api\\ProductApi.Api.csproj",
       "projectName": "ProductApi.Api",
-      "projectPath": "H:\\Task\\src\\ProductApi.Api\\ProductApi.Api.csproj",
+      "projectPath": "G:\\lastt\\ProductManagement\\src\\ProductApi.Api\\ProductApi.Api.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "H:\\Task\\src\\ProductApi.Api\\obj\\",
+      "outputPath": "G:\\lastt\\ProductManagement\\src\\ProductApi.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5654,11 +5654,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "H:\\Task\\src\\ProductApi.Application\\ProductApi.Application.csproj": {
-              "projectPath": "H:\\Task\\src\\ProductApi.Application\\ProductApi.Application.csproj"
+            "G:\\lastt\\ProductManagement\\src\\ProductApi.Application\\ProductApi.Application.csproj": {
+              "projectPath": "G:\\lastt\\ProductManagement\\src\\ProductApi.Application\\ProductApi.Application.csproj"
             },
-            "H:\\Task\\src\\ProductApi.Infrastructure\\ProductApi.Infrastructure.csproj": {
-              "projectPath": "H:\\Task\\src\\ProductApi.Infrastructure\\ProductApi.Infrastructure.csproj"
+            "G:\\lastt\\ProductManagement\\src\\ProductApi.Infrastructure\\ProductApi.Infrastructure.csproj": {
+              "projectPath": "G:\\lastt\\ProductManagement\\src\\ProductApi.Infrastructure\\ProductApi.Infrastructure.csproj"
             }
           }
         }

@@ -23,7 +23,6 @@ namespace ProductApi.Application.Products.Commands
             var product = _mapper.Map<Product>(request);
             product.UserId = request.UserId;
             int MyProductId = await _unitOfWork.ProductRepository.AddAsync(product);
-            await _unitOfWork.SaveAsync();
             return MyProductId;
         }
     }

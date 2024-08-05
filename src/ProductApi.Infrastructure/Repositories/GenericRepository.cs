@@ -20,6 +20,7 @@ namespace ProductApi.Infrastructure.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
             await dbset.AddAsync(entity);
+            await context.SaveChangesAsync();
             return entity.Id;
         }
         //public virtual Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> expression)

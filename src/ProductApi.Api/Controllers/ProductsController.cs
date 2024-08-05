@@ -51,9 +51,10 @@ namespace ProductApi.Api.Controllers
         [Authorize]
         public async Task<ActionResult<int>> CreateProductWithAutoEmailAndUserIdLoadingFromClaim(CreateProductCommand command)
         {
-            var user = HttpContext.User;
-            command.UserId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            command.ManufactureEmail = user.FindFirst(ClaimTypes.Email)?.Value;
+
+            command.ManufactureEmail = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            command.UserId = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var x = command.ManufactureEmail;
             var productId = await _mediator.Send(command);
             return Ok(productId);
         }
@@ -66,8 +67,9 @@ namespace ProductApi.Api.Controllers
             {
                 return BadRequest();
             }
-            var user = HttpContext.User;
-            var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            var userId = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+ 
             var product = await _mediator.Send(new GetProductByIdQuery { Id = id });
 
             if (product == null)
@@ -88,8 +90,7 @@ namespace ProductApi.Api.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var user = HttpContext.User;
-            var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        
             var product = await _mediator.Send(new GetProductByIdQuery { Id = id });
 
             if (product == null)
@@ -97,7 +98,7 @@ namespace ProductApi.Api.Controllers
                 return NotFound();
             }
 
-            if (product.UserId != userId)
+            if (product.UserId !=User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value)
             {
                 return Forbid();
             }
