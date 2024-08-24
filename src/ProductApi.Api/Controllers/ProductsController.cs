@@ -2,13 +2,17 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProductApi.Application.Products.Commands;
-using ProductApi.Application.Products.Queries;
-using ProductApi.Domain.Entities;
+using ProductApi.Application.ProductsFeatures.Commands;
+using ProductApi.Application.ProductsFeatures.Commands.CreateProduct;
+using ProductApi.Application.ProductsFeatures.Commands.UpdateProduct;
+using ProductApi.Application.ProductsFeatures.Commands.DeleteProduct;
+using ProductApi.Application.ProductsFeatures.Queries.GetProductById;
+using ProductApi.Application.ProductsFeatures.Queries.GetProducts;
+using ProductApi.Application.ProductsFeatures.Queries.GetProductsByUserId;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using ProductApi.Domain.VM;
+using ProductApi.Application.VM;
 
 namespace ProductApi.Api.Controllers
 {

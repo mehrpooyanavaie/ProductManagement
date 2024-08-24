@@ -1,5 +1,5 @@
 using ProductApi.Application.Interfaces.Identity;
-using ProductApi.Domain.Models.Identity;
+using ProductApi.Application.Models.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

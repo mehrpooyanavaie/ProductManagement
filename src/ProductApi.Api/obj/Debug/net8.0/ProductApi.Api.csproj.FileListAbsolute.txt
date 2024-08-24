@@ -309,3 +309,4 @@ G:\lastt\ProductManagement\src\ProductApi.Api\obj\Debug\net8.0\refint\ProductApi
 G:\lastt\ProductManagement\src\ProductApi.Api\obj\Debug\net8.0\ProductApi.Api.pdb
 G:\lastt\ProductManagement\src\ProductApi.Api\obj\Debug\net8.0\ProductApi.Api.genruntimeconfig.cache
 G:\lastt\ProductManagement\src\ProductApi.Api\obj\Debug\net8.0\ref\ProductApi.Api.dll
+G:\lastt\ProductManagement\src\ProductApi.Api\bin\Debug\net8.0\RabbitMQ.Client.dll

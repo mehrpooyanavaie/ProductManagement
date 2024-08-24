@@ -11,7 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ProductApi.Infrastructure.Identity.Models;
 using ProductApi.Application.Interfaces.Identity;
-using ProductApi.Domain.Models.Identity;
+using ProductApi.Application.Models.Identity;
+using ProductApi.Application.Interfaces.Messaging;
+using ProductApi.Application.Models.Messaging;
 
 namespace ProductApi.Infrastructure.Identity.Services
 {
@@ -20,16 +22,18 @@ namespace ProductApi.Infrastructure.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly JwtSettings _jwtSettings;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IRabbitMqService _rabbitMqService;
 
         public AuthService(UserManager<ApplicationUser> userManager,
             IOptions<JwtSettings> jwtSettings,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager, IRabbitMqService rabbitMqService)
         {
             _userManager = userManager;
             _jwtSettings = jwtSettings.Value;
             _signInManager = signInManager;
+            _rabbitMqService = rabbitMqService;
         }
- 
+
 
         #region Register
         public async Task<RegistrationResponse> Register(RegisterationRequest request)
@@ -46,9 +50,8 @@ namespace ProductApi.Infrastructure.Identity.Services
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 UserName = request.UserName,
-                EmailConfirmed = true
+                EmailConfirmed = false
             };
-
 
             var existingEmail = await _userManager.FindByEmailAsync(request.Email);
             if (existingEmail == null)
@@ -58,12 +61,21 @@ namespace ProductApi.Infrastructure.Identity.Services
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "karbar");
+
+                    var verificationToken = new VerificationToken
+                    {
+                        Email = user.Email,
+                        Token = Guid.NewGuid().ToString()
+                    };
+                    _rabbitMqService.SendVerificationToken(verificationToken);
+
                     return new RegistrationResponse() { UserId = user.Id };
                 }
                 else
                 {
                     throw new Exception($"{result.Errors}");
                 }
+
             }
             else
             {
@@ -107,7 +119,7 @@ namespace ProductApi.Infrastructure.Identity.Services
 
             var roleClaims = new List<Claim>();
 
-            for(int i=0;i<roles.Count;i++)
+            for (int i = 0; i < roles.Count; i++)
             {
                 roleClaims.Add(new Claim(ClaimTypes.Role, roles[i]));
             }
@@ -128,7 +140,7 @@ namespace ProductApi.Infrastructure.Identity.Services
             var jwtSecurityToken = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
-                claims:claims,
+                claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
                 signingCredentials: signingCredentials);
 

@@ -255,6 +255,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            },
             "system.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.0.1, )"

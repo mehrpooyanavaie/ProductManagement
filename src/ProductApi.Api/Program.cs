@@ -13,27 +13,30 @@ using AutoMapper;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
+using ProductApi.Application.Mapping;
+using ProductApi.Application.ProductsFeatures;
+using ProductApi.Infrastructure.RabbitMq;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.ConfigureRabbitMqServices();
 builder.Services.ConfigureIdentityServices(builder.Configuration);
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.ConfigureApplicationDbContextService(builder.Configuration);
+builder.Services.ConfigureUnitOfWorkService();
+builder.Services.ConfigurMediatRServices();
+builder.Services.ConfigureMappingService();
 // builder.Services.AddAuthorization();
 
 
 builder.Services.AddEndpointsApiExplorer();
 // builder.Services.AddSwaggerGen();
 AddSwagger(builder.Services);
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(ProductApi.Application.Products.Commands.CreateProductCommand).Assembly);
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly(), typeof(ProductApi.Application.Products.Commands.CreateProductCommand).Assembly);
-
-// Add Application services
-builder.Services.AddTransient<IProductRepository, ProductRepository>();
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+// builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(ProductApi.Application.Products.Commands.CreateProductCommand).Assembly);
+// builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly(), typeof(ProductApi.Application.Products.Commands.CreateProductCommand).Assembly);
 
 var app = builder.Build();
 
