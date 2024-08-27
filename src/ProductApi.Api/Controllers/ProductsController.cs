@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using ProductApi.Application.VM;
+using ProductApi.Application.Constants;
+
 
 namespace ProductApi.Api.Controllers
 {
@@ -53,28 +55,30 @@ namespace ProductApi.Api.Controllers
 
         [HttpPost("CreateProductWithAutoEmailAndUserIdLoadingFromClaim")]
         [Authorize]
-        public async Task<ActionResult<int>> CreateProductWithAutoEmailAndUserIdLoadingFromClaim(CreateProductCommand command)
+        public async Task<IActionResult> CreateProductWithAutoEmailAndUserIdLoadingFromClaim(CreateProductCommand command)
         {
-
-            command.ManufactureEmail = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            command.UserId = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            var x = command.ManufactureEmail;
-            var productId = await _mediator.Send(command);
-            return Ok(productId);
+            var emailVerifiedClaim = User?.Claims.FirstOrDefault(c => c.Type == CustomClaimTypes.EmailVerified)?.Value;
+            if (emailVerifiedClaim != null && bool.TryParse(emailVerifiedClaim, out bool isEmailVerified) && isEmailVerified)
+            {
+                command.ManufactureEmail = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+                command.UserId = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                var x = command.ManufactureEmail;
+                var productId = await _mediator.Send(command);
+                return Ok(productId);
+            }
+            else
+            {
+                return Forbid("Email not verified");
+            }
         }
 
         [HttpPut("updateproduct/{id}")]
         [Authorize]
-        public async Task<IActionResult> UpdateProduct(int id, UpdateProductCommand command)
+        public async Task<IActionResult> UpdateProduct(UpdateProductCommand command)
         {
-            if (id != command.Id)
-            {
-                return BadRequest();
-            }
-
             var userId = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
- 
-            var product = await _mediator.Send(new GetProductByIdQuery { Id = id });
+
+            var product = await _mediator.Send(new GetProductByIdQuery { Id = command.Id});
 
             if (product == null)
             {
@@ -94,7 +98,7 @@ namespace ProductApi.Api.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-        
+
             var product = await _mediator.Send(new GetProductByIdQuery { Id = id });
 
             if (product == null)
@@ -102,7 +106,7 @@ namespace ProductApi.Api.Controllers
                 return NotFound();
             }
 
-            if (product.UserId !=User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value)
+            if (product.UserId != User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value)
             {
                 return Forbid();
             }

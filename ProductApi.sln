@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -16,10 +16,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E1B3E9AE-0E5E-4111-B141-4F7F51343DE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi.Application.Tests", "tests\ProductApi.Application.Tests\ProductApi.Application.Tests.csproj", "{27DD42D3-DA5D-4BB9-8386-21E1A1ED1810}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi.Infrastructure.Tests", "tests\ProductApi.Infrastructure.Tests\ProductApi.Infrastructure.Tests.csproj", "{8F6CD985-20AE-488F-9388-97A634149F65}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailVerification", "src\EmailVerification\EmailVerification.csproj", "{5530E7DC-38C3-4BEA-96CA-0AC3A3A65E2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,7 +61,5 @@ Global
 		{C26054A5-A1A8-4906-8084-03D7B605403C} = {BE94C70D-BBAD-4A61-A076-FAC827A2FFD9}
 		{975E2F76-A00F-47F2-BB73-BBCD9E6F58E8} = {BE94C70D-BBAD-4A61-A076-FAC827A2FFD9}
 		{27DD42D3-DA5D-4BB9-8386-21E1A1ED1810} = {E1B3E9AE-0E5E-4111-B141-4F7F51343DE5}
-		{8F6CD985-20AE-488F-9388-97A634149F65} = {E1B3E9AE-0E5E-4111-B141-4F7F51343DE5}
-		{5530E7DC-38C3-4BEA-96CA-0AC3A3A65E2B} = {BE94C70D-BBAD-4A61-A076-FAC827A2FFD9}
 	EndGlobalSection
 EndGlobal

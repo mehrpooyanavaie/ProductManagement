@@ -234,12 +234,18 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("TokenExpiryDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("VerificationToken")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -258,7 +264,7 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                         {
                             Id = "05446344-f9cc-4566-bd2c-36791b4e28ed",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "db695595-44ab-4bfb-b530-b3391a8dfa3c",
+                            ConcurrencyStamp = "9bd80e85-19dc-450c-8fe1-3bfdf7c93801",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -266,9 +272,9 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECf4K1AjVhgniGPE8BGUv2YkZn++raJvJDYyL3I7DQuL/t9EVRUPtbgvWrz67vBM8w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJd7Mi3tzpNB6vpq9dAe/Krk2OlV7lxZT6XmN7eoV92JSStO4xwlSIhDd+wegVOdbA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "44308d83-6c94-43ea-9ec2-57e394768330",
+                            SecurityStamp = "7a56ece9-00ec-4a49-9c59-13cf9896ca06",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -276,7 +282,7 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                         {
                             Id = "2ec9f480-7288-4d0f-a1cd-53cc89968b45",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2da412a4-fd4b-4e94-addd-dbf7c6d3ff41",
+                            ConcurrencyStamp = "ece5559f-a16c-46e3-aef6-85b5c63f7992",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "User",
@@ -284,9 +290,9 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAoKjWCzzPJdFrX4u4WKfjFKQMwFRjfwa5DZRve4AFPED4mFiFHU/PQ0TY3nL+NRJA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDAQRt+GeBtHZeaZs+5HiLZJ4AkpDtH9FTbDkDdn30D8BlijLV+EcvH1B+rHuEGUIQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e81cc2e4-628c-4671-a92b-cf5a97297eda",
+                            SecurityStamp = "7c519489-0b74-4b81-b004-564e8e1ca414",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });

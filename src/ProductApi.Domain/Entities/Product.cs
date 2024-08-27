@@ -10,6 +10,7 @@ namespace ProductApi.Domain.Entities
         public string Name { get; set; }
         [System.ComponentModel.DataAnnotations.Required]
         public DateTime ProduceDate { get; set; }
+        [System.ComponentModel.DataAnnotations.Phone]
         public string ManufacturePhone { get; set; }
         [System.ComponentModel.DataAnnotations.EmailAddress]
         [System.ComponentModel.DataAnnotations.Required]

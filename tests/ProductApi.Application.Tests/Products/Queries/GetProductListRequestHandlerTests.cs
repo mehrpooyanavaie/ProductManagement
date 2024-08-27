@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using ProductApi.Application.Interfaces;
 using ProductApi.Domain.Entities;
-using ProductApi.Application.Products.Queries;  
-using ProductApi.Api.Mappings;
+using ProductApi.Application.ProductsFeatures.Queries.GetProducts;  
+using ProductApi.Application.Mappings;
 using ProductApi.Application.Tests.Mocks;
 using Moq;
 using Shouldly;
 using Xunit;
-using ProductApi.Domain.VM;
+using ProductApi.Application.VM;
 //ddddd
 namespace ProductApi.Application.Tests.Products.Queries
 {

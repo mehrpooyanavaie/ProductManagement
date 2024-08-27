@@ -10,6 +10,7 @@ namespace ProductApi.Application.ProductsFeatures.Commands.CreateProduct
         [Required]
         public string Name { get; set; }
         public DateTime ProduceDate { get; set; }
+        [Phone]
         public string ManufacturePhone { get; set; }
         [JsonIgnore]
         public string? ManufactureEmail { get; set; }

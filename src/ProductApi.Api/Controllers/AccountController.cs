@@ -2,32 +2,42 @@ using ProductApi.Application.Interfaces.Identity;
 using ProductApi.Application.Models.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using ProductApi.Application.VM;
 namespace ProductApi.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IAuthService authService;
+        private readonly IAuthService _authService;
 
         public AccountController(IAuthService authService)
         {
-            this.authService = authService;
+            _authService = authService;
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
         {
-            return Ok(await authService.Login(request));
+            return Ok(await _authService.Login(request));
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<RegistrationResponse>> Register(RegisterationRequest request)
         {
-            return Ok(await authService.Register(request));
+            return Ok(await _authService.Register(request));
         }
-
-
+        [HttpPost("verification")]
+        public async Task<IActionResult> VerifyWithVerifyTokenAsync(VerificationVM verificationVM)
+        {
+            await _authService.Verification(verificationVM);
+            return Ok("If you were authorized,generate a new jwt token with login action for update your claim");
+        }
+        [HttpPost("SendANewTokenToConsole")]
+        public async Task<IActionResult> SendANewTokenToConsole(AuthRequest request)
+        {
+            await _authService.RegenerateVerificationToken(request);
+            return Ok();
+        }
     }
 }

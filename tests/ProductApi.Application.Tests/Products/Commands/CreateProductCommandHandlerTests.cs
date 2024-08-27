@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using ProductApi.Application.Interfaces;
-using ProductApi.Domain.VM;
+using ProductApi.Application.VM;
 using ProductApi.Domain.Entities;
-using ProductApi.Application.Products.Commands;
-using ProductApi.Application.Products.Queries;
-using ProductApi.Api.Mappings;
+using ProductApi.Application.ProductsFeatures.Commands.CreateProduct;
+using ProductApi.Application.Mappings;
 using ProductApi.Application.Tests.Mocks;
 using Moq;
 using Shouldly;
