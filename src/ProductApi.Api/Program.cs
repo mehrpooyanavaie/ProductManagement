@@ -23,20 +23,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.ConfigureRabbitMqServices();
+builder.Services.ConfigureRabbitMqServices(builder.Configuration);
 builder.Services.ConfigureIdentityServices(builder.Configuration);
 builder.Services.ConfigureApplicationDbContextService(builder.Configuration);
 builder.Services.ConfigureUnitOfWorkService();
 builder.Services.ConfigurMediatRServices();
 builder.Services.ConfigureMappingService();
-// builder.Services.AddAuthorization();
+
 
 
 builder.Services.AddEndpointsApiExplorer();
-// builder.Services.AddSwaggerGen();
+
 AddSwagger(builder.Services);
-// builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(ProductApi.Application.Products.Commands.CreateProductCommand).Assembly);
-// builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly(), typeof(ProductApi.Application.Products.Commands.CreateProductCommand).Assembly);
 
 var app = builder.Build();
 

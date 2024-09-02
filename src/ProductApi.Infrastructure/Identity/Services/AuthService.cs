@@ -161,6 +161,10 @@ namespace ProductApi.Infrastructure.Identity.Services
             {
                 throw new Exception($"user with {request.Email} not found.");
             }
+            if (user.EmailConfirmed == false)
+            {
+                throw new Exception($"You have to verify {request.Email} to login");
+            }
 
             var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
 
@@ -199,8 +203,7 @@ namespace ProductApi.Infrastructure.Identity.Services
                 new Claim(JwtRegisteredClaimNames.Sub,user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                new Claim(CustomClaimTypes.Uid,user.Id),
-                new Claim(CustomClaimTypes.EmailVerified, user.EmailConfirmed.ToString())
+                new Claim(CustomClaimTypes.Uid,user.Id)
             }
             .Union(userClaims)
             .Union(roleClaims);
