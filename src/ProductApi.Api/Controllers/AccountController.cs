@@ -31,7 +31,7 @@ namespace ProductApi.Api.Controllers
         public async Task<IActionResult> VerifyWithVerifyTokenAsync(VerificationVM verificationVM)
         {
             await _authService.Verification(verificationVM);
-            return Ok("If you were authorized,generate a new jwt token with login action for update your claim");
+            return Ok("now, you can login to your account");
         }
         [HttpPost("SendANewTokenToConsole")]
         public async Task<IActionResult> SendANewTokenToConsole(AuthRequest request)

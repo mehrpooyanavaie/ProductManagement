@@ -57,19 +57,12 @@ namespace ProductApi.Api.Controllers
         [Authorize]
         public async Task<IActionResult> CreateProductWithAutoEmailAndUserIdLoadingFromClaim(CreateProductCommand command)
         {
-            var emailVerifiedClaim = User?.Claims.FirstOrDefault(c => c.Type == CustomClaimTypes.EmailVerified)?.Value;
-            if (emailVerifiedClaim != null && bool.TryParse(emailVerifiedClaim, out bool isEmailVerified) && isEmailVerified)
-            {
+                
                 command.ManufactureEmail = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
                 command.UserId = User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-                var x = command.ManufactureEmail;
                 var productId = await _mediator.Send(command);
                 return Ok(productId);
-            }
-            else
-            {
-                return Forbid("Email not verified");
-            }
+
         }
 
         [HttpPut("updateproduct/{id}")]
