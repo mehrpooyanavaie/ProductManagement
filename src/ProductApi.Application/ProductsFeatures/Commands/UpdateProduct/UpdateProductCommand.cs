@@ -13,5 +13,6 @@ namespace ProductApi.Application.ProductsFeatures.Commands.UpdateProduct
         [System.ComponentModel.DataAnnotations.Phone]
         public string ManufacturePhone { get; set; }
         public bool IsAvailable { get; set; }
+        public List<int> CategoryIds { get; set; }
     }
 }

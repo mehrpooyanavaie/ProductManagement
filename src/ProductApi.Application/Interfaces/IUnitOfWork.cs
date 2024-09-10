@@ -5,5 +5,6 @@ namespace ProductApi.Application.Interfaces
         public bool IsDisposed { get; }
         public Task SaveAsync();
         IProductRepository ProductRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
     }
 }

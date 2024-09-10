@@ -16,6 +16,9 @@ using Microsoft.OpenApi.Models;
 using ProductApi.Application.Mapping;
 using ProductApi.Application.ProductsFeatures;
 using ProductApi.Infrastructure.RabbitMq;
+using Microsoft.Extensions.Hosting;
+using System.Security.Claims;
+using System.Threading.RateLimiting;
 
 
 
@@ -29,6 +32,31 @@ builder.Services.ConfigureApplicationDbContextService(builder.Configuration);
 builder.Services.ConfigureUnitOfWorkService();
 builder.Services.ConfigurMediatRServices();
 builder.Services.ConfigureMappingService();
+builder.Services.ConfigureRedisServices(builder.Configuration);
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+    {
+        var userId = context.User.Identity?.IsAuthenticated == true
+            ? context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+            : "anonymous";
+
+        return RateLimitPartition.GetTokenBucketLimiter(userId ?? "anonymous", _ => new TokenBucketRateLimiterOptions
+        {
+            TokenLimit = 100,
+            ReplenishmentPeriod = TimeSpan.FromMinutes(1),
+            TokensPerPeriod = 10,
+            QueueLimit = 0,
+            AutoReplenishment = true
+        });
+    });
+
+    options.OnRejected = async (context, token) =>
+    {
+        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+        await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.");
+    };
+});
 
 
 
@@ -46,11 +74,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthentication();
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseAuthorization();
-
+app.UseRateLimiter();
 app.MapControllers();
-
 app.Run();
 
 void AddSwagger(IServiceCollection services)
@@ -86,7 +113,7 @@ void AddSwagger(IServiceCollection services)
             }
         });
 
-        o.SwaggerDoc("v1",new OpenApiInfo()
+        o.SwaggerDoc("v1", new OpenApiInfo()
         {
             Version = "v1",
             Title = " ProductApi Api"

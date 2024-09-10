@@ -39,6 +39,7 @@ namespace ProductApi.Infrastructure.UnitOfWork
         }
         private IProductRepository _productRepository;
         //with lazy loadingg
+        private ICategoryRepository _categoryRepository;
         public IProductRepository ProductRepository
         {
             get
@@ -49,6 +50,18 @@ namespace ProductApi.Infrastructure.UnitOfWork
                 }
 
                 return _productRepository;
+            }
+        }
+        public ICategoryRepository CategoryRepository
+        {
+            get
+            {
+                if (_categoryRepository == null)
+                {
+                    _categoryRepository = new CategoryRepository(_databaseContext);
+                }
+
+                return _categoryRepository;
             }
         }
         ~UnitOfWork()

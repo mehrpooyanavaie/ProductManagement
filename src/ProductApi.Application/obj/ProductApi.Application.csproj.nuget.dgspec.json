@@ -66,6 +66,14 @@
               "target": "Package",
               "version": "[11.1.0, )"
             },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.8.12, )"
+            },
             "System.Text.Json": {
               "target": "Package",
               "version": "[8.0.4, )"

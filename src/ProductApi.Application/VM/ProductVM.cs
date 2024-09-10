@@ -10,5 +10,6 @@ namespace ProductApi.Application.VM
         public string ManufactureEmail { get; set; }
         public bool IsAvailable { get; set; }
         public string UserId { get; set; }
+        public List<string> CategoryNames { get; set; }
     }
 }

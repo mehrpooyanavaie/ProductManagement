@@ -4,6 +4,10 @@ namespace ProductApi.Domain.Entities
 {
     public class Product : BaseEntity
     {
+        public Product()
+        {
+            categoryProducts = new List<CategoryProduct>();
+        }
 
         [System.ComponentModel.DataAnnotations.Required]
         [System.ComponentModel.DataAnnotations.MaxLength(100)]
@@ -19,5 +23,6 @@ namespace ProductApi.Domain.Entities
         /*with out quantity*/
         public string UserId { get; set; }
         // public IdentityUser User { get; set; }
+        public ICollection<CategoryProduct> categoryProducts { get; set; }
     }
 }

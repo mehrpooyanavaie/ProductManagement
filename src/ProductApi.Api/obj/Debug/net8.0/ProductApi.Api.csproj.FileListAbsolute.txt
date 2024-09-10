@@ -310,3 +310,8 @@ G:\lastt\ProductManagement\src\ProductApi.Api\obj\Debug\net8.0\ProductApi.Api.pd
 G:\lastt\ProductManagement\src\ProductApi.Api\obj\Debug\net8.0\ProductApi.Api.genruntimeconfig.cache
 G:\lastt\ProductManagement\src\ProductApi.Api\obj\Debug\net8.0\ref\ProductApi.Api.dll
 G:\lastt\ProductManagement\src\ProductApi.Api\bin\Debug\net8.0\RabbitMQ.Client.dll
+G:\lastt\ProductManagement\src\ProductApi.Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+G:\lastt\ProductManagement\src\ProductApi.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+G:\lastt\ProductManagement\src\ProductApi.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+G:\lastt\ProductManagement\src\ProductApi.Api\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+G:\lastt\ProductManagement\src\ProductApi.Api\bin\Debug\net8.0\StackExchange.Redis.dll

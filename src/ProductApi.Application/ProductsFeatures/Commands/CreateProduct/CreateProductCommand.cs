@@ -14,9 +14,10 @@ namespace ProductApi.Application.ProductsFeatures.Commands.CreateProduct
         public string ManufacturePhone { get; set; }
         [JsonIgnore]
         public string? ManufactureEmail { get; set; }
-         [Required]
+        [Required]
         public bool IsAvailable { get; set; }
         [JsonIgnore]
         public string? UserId { get; set; }
+        public List<int> CategoryIds { get; set; }
     }
 }

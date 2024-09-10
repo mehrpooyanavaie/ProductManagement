@@ -9,11 +9,11 @@ using ProductApi.Infrastructure.Identity;
 
 #nullable disable
 
-namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
+namespace ProductApi.Infrastructure.Migrations
 {
     [DbContext(typeof(MyIdentityDbContext))]
-    [Migration("20240827053546_IdentityMig")]
-    partial class IdentityMig
+    [Migration("20240909223131_NewMigrationName")]
+    partial class NewMigrationName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -267,7 +267,7 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                         {
                             Id = "05446344-f9cc-4566-bd2c-36791b4e28ed",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9bd80e85-19dc-450c-8fe1-3bfdf7c93801",
+                            ConcurrencyStamp = "f6826f71-9013-42c2-a62e-321e962c0784",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -275,9 +275,9 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJd7Mi3tzpNB6vpq9dAe/Krk2OlV7lxZT6XmN7eoV92JSStO4xwlSIhDd+wegVOdbA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEExH/oGY5jjZWjkq997oBqOuuRrrn7uh2SWga8/wbiWIlWqIYJ2ItlakrhPgZFcK5Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a56ece9-00ec-4a49-9c59-13cf9896ca06",
+                            SecurityStamp = "2b9e3973-aa3b-4cc6-ba27-e8f7ad9c4bde",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -285,7 +285,7 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                         {
                             Id = "2ec9f480-7288-4d0f-a1cd-53cc89968b45",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ece5559f-a16c-46e3-aef6-85b5c63f7992",
+                            ConcurrencyStamp = "5d5362b9-f76f-4225-8e06-ef069a711921",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "User",
@@ -293,9 +293,9 @@ namespace ProductApi.Infrastructure.Migrations.MyIdentityDb
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDAQRt+GeBtHZeaZs+5HiLZJ4AkpDtH9FTbDkDdn30D8BlijLV+EcvH1B+rHuEGUIQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENq59jZUNwR5/83a0CC8LbzL5PRIrlOdZDaUuYBN60x4D4qp849FLT8gSWV8HbXIWQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7c519489-0b74-4b81-b004-564e8e1ca414",
+                            SecurityStamp = "03fa8ce1-0cd2-4b81-9626-13ef6b2b522a",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });
