@@ -290,5 +290,3 @@ This project is open-source and distributed under the MIT License. You are free 
 Contact
 For further questions or support, please reach out at:
 mnavaienezhad@gmail.com
-
-Copy
